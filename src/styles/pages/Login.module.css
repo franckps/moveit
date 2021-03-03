@@ -1,0 +1,99 @@
+.loginContainer {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: #5965E0;
+    background-image: url('/simbolo.png');
+    background-repeat: no-repeat;
+    background-size: auto 80vh;
+    background-position-y: 10vh;
+}
+
+.loginContainer > section {
+    width: 100%;
+    min-height: 100%;
+    max-width: 38.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.loginContainer > section > img {
+    margin-bottom: 6rem;
+}
+
+.loginContainer > section > h1 {
+    font-size: 2.25rem;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.loginContainer > section > p{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2.5rem;
+}
+
+.loginContainer > section > p img {
+    margin-right: 1.5rem;
+    height: 40px;
+    width: 40px;
+}
+
+.loginContainer > section > p span{
+    flex: 1;
+    max-width: 15.87rem;
+    font-size: 1.25rem;
+    color: var(--text-highlight);
+}
+
+.loginContainer > section > form {
+    display: flex;
+    width: 100%;
+    max-width: 26.25rem;
+
+}
+
+.loginContainer > section > form input {
+    padding: 1.4rem 0 1.4rem 1.87rem;
+    flex: 1;
+    border-radius: 5px 0 0 5px;
+    border: 0;
+    color: var(--white);
+    background-color: transparent;
+    background-image: linear-gradient(to right ,rgba(73, 83, 184, 1), rgba(73, 83, 184, .2));
+}
+
+.loginContainer > section > form input::placeholder {
+    color: var(--text-highlight);
+    opacity: 1;
+}
+
+.loginContainer > section > form input:-ms-input-placeholder {
+    color: var(--text-highlight);
+}
+
+.loginContainer > section > form input::-ms-input-placeholder {
+    color: var(--text-highlight);
+}
+
+.loginContainer > section > form button {
+    width: 5rem;
+    border-radius: 0 5px 5px 0;
+    border: 0;
+    background-color: var(--green);
+    cursor: pointer;
+}
+
+.loginContainer > section > form button:active:not(:disabled) {
+    opacity: .7;
+}
+
+.loginContainer > section > form button:disabled {
+    background-color: var(--blue-dark);
+    cursor: not-allowed;
+}
