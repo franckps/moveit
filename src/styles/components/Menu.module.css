@@ -1,0 +1,53 @@
+.menuContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 7rem;
+    height: 100%;
+    padding: 2rem 0;
+    background: linear-gradient(rgba(255,255,255, 1), rgba(255,255,255, 0))
+}
+
+.menuContainer + * {
+    margin-right: 7rem;
+}
+
+.menuContainer .menuLink {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16px;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+.menuContainer main .menuLink {
+    position: relative;
+    filter: grayscale();
+}
+
+.menuContainer main .menuLink.active {
+    filter: grayscale(0);
+}
+
+.menuContainer main .menuLink::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    border-right: 0 solid transparent;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: .7s all;
+}
+
+.menuContainer main .menuLink.active::after {
+    border-right: 5px solid var(--blue-dark);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
