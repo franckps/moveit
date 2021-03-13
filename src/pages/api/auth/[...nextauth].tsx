@@ -9,7 +9,7 @@ const options = {
         clientSecret: process.env.GITHUB_SECRET
         }),
     ],
-    //database: process.env.DATABASE_URL,
+    database: process.env.DATABASE_URL,
 }
 
 export default (req: NextApiRequest, resp: NextApiResponse): Promise<void> => NextAuth(req, resp, options)
