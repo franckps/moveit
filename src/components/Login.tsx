@@ -8,6 +8,7 @@ interface LoginPropsInterface {
 
 export default function Login({ handleLogin }: LoginPropsInterface) {
     const [message, setMessage] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     return (
         <div className={styles.loginContainer}>
@@ -22,10 +23,17 @@ export default function Login({ handleLogin }: LoginPropsInterface) {
                     </span>
                 </p>
                 <div>
-                    <button type="button" onClick={handleLogin}>
+                {loading? (
+                    <button type="button" disabled>
+                        <span>carregando...</span>
+                        <span></span>
+                    </button>
+                ) : (
+                    <button type="button" onClick={() => {setLoading(true); handleLogin()}}>
                         <span>Logar com o github</span>
                         <span><img src="/arrow-right.png" alt="Login Button"/></span>
                     </button>
+                )}
                 </div>
                 <span style={{paddingLeft: '1.87rem',color: '#F00'}}>{message}</span>
             </section>

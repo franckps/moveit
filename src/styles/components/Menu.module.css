@@ -8,7 +8,8 @@
     width: 7rem;
     height: 100%;
     padding: 2rem 0;
-    background: linear-gradient(rgba(255,255,255, 1), rgba(255,255,255, 0))
+    background: linear-gradient(rgba(255,255,255, 1), rgba(255,255,255, 0));
+    z-index: 3;
 }
 
 .menuContainer + * {
@@ -50,4 +51,62 @@
     border-right: 5px solid var(--blue-dark);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+@media screen and (min-width: 470px) and (max-width: 1200px) {
+    .menuContainer + * {
+        margin-right: 0;
+        width: calc(100% - (7rem + 10px));
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .menuContainer {
+        top: 0;
+        left: 0;
+        padding: .5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        height: 5rem;
+        background-color: #fff;
+    }
+
+    .menuContainer main {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .menuContainer + * {
+        margin: 0;
+        margin-top: 4rem;
+        width: 100%;
+    }
+
+    .menuContainer .menuLink {
+        width: auto;
+    }
+
+    .menuContainer main .menuLink::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: calc(100% + 2px);
+        width: 100%;
+        height: 0;
+        border-top: 0 solid transparent;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        transition: .7s all;
+    }
+    
+    .menuContainer main .menuLink.active::after {
+        border-top: 5px solid var(--blue-dark);
+        border-radius: 0;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
 }

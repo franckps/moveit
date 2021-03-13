@@ -28,3 +28,19 @@ span.currentExperience {
     top: 12px;
     transform: translateX(-50%);
 }
+
+@media screen and (max-width: 400px) {
+    .experienceBar {
+        position: relative;
+        padding-top: 25px;
+    }
+
+    .experienceBar > span {
+        position: absolute;
+        top: 0;
+    }
+
+    .experienceBar > span:last-of-type {
+        right: 0;
+    }
+}

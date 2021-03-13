@@ -18,15 +18,11 @@ import { useCallback, useEffect, useState } from 'react';
 import Award from '../components/Award';
 
 interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-  login: string,
-  name: string
+  login: string
 }
 
 function handleLogin() {
-  signIn()
+  signIn('github')
 }
 
 function handleSignOut() {
@@ -49,11 +45,9 @@ export default function Home(props: HomeProps) {
   }, [])
 
   return (<>
-    {!session? <Login handleLogin={handleLogin} /> : (
+    {!session? <Login handleLogin={handleLogin}/> : (
       <ChallengesProvider 
-        level={props.level}
-        currentExperience={props.currentExperience}
-        challengesCompleted={props.challengesCompleted}
+        login={session.user.name}
       >
 
         <Menu activePage={String(activePage) as 'home' | 'award'} handleChangePage={handleChangePage}/>
@@ -93,14 +87,10 @@ export default function Home(props: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengesCompleted, login, name } = ctx.req.cookies
+  const { login } = ctx.req.cookies
   return {
-    props: { 
-      level: Number(level), 
-      currentExperience: Number(currentExperience), 
-      challengesCompleted: Number(challengesCompleted),
-      login: String(login), 
-      name: String(name)
+    props: {
+      login: String(login)
     }
   }
 }
