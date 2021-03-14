@@ -55,7 +55,7 @@
 
 @media screen and (min-width: 470px) and (max-width: 1200px) {
     .menuContainer + * {
-        margin-right: 0;
+        margin-right: 0 !important;
         width: calc(100% - (7rem + 10px));
     }
 }
@@ -82,7 +82,7 @@
 
     .menuContainer + * {
         margin: 0;
-        margin-top: 4rem;
+        margin-top: 4rem !important;
         width: 100%;
     }
 
