@@ -27,10 +27,6 @@ export default function Award() {
   const getUsersData = async () => {
     let {data}: {message: string, data: Array<UserInterface>} = 
       (await axios.get('/api/Users')).data
-    data.push(data[0])
-    data.push(data[0])
-    data.push(data[1])
-    data.push(data[1])
     setUsers(data)
   }
 
