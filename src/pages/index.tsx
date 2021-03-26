@@ -46,9 +46,7 @@ export default function Home(props: HomeProps) {
 
   return (<>
     {!session? <Login handleLogin={handleLogin}/> : (
-      <ChallengesProvider 
-        login={session.user.name}
-      >
+      <ChallengesProvider login={session.user.name}>
 
         <Menu activePage={String(activePage) as 'home' | 'award'} handleChangePage={handleChangePage}/>
 

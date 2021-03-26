@@ -1,18 +1,237 @@
 .container {
-    height: 100vh;
     max-width: 992px;
-    margin: 0 auto;
     padding: 2.5rem 2rem;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.container h1 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+.container section {
+    flex: 1;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
 }
 
-.container section {
-    flex: 1;
+.container section > header {
+    margin-bottom: 1.5rem
+}
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6.25rem;
-    align-content: center;
+.container section > header span {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #666666;
+}
+
+.container section > main ul {
+    list-style: none;
+}
+
+.container section > main li div > img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin: 1rem;
+}
+
+.container section > main li > div {
+    margin-left: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.container section > main li div strong {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--title);
+}
+
+.container section > main li p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.container section > main li p img {
+    margin-right: 0.5rem;
+}
+
+.container section > main li * > span {
+    color: var(--blue-dark);
+}
+
+.row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    border-bottom: 4px solid var(--background);
+
+    border-radius: 5px;
+}
+
+main .row{
+    background-color: var(--white);
+}
+
+main .row > *:nth-child(1) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 4px solid var(--background);
+}
+
+main .row button {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: var(--white);
+}
+
+main .row button > img {
+    margin: 0 auto !important;
+}
+
+.row > *:nth-child(1) {
+    width: 4.5rem;
+}
+
+.row > *:nth-child(2) {
+    flex: 1;
+    padding-left: 4.5rem;
+}
+
+.row > *:nth-child(3) {
+    width: 10.6rem;
+}
+
+.row > *:nth-child(4) {
+    width: 8.75rem;
+} 
+
+.row > *:nth-child(5) {
+    display: none;
+} 
+
+.overlay {
+    background-color: rgba(242, 243, 245, 0.8);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 3;
+}
+
+.detailsContainer {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem 3rem;
+    border-radius: 5px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, .05);
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detailsContainer button {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    background: transparent;
+    border: 0;
+    font-size: 0;
+}
+
+.detailsContainer * > span {
+    color: var(--blue-dark);
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.profileContainer > img {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profileContainer div {
+    margin-left: 1.5rem;
+}
+
+.profileContainer div strong {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--title);
+}
+
+.profileContainer div p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.profileContainer div p img {
+    margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 920px) {
+    .row > *:nth-child(2) {
+        flex: 1;
+        padding-left: 2.5rem;
+    }
+
+    .row > *:nth-child(3), .row > *:nth-child(4) {
+        display: none;
+    }
+
+    .row > *:nth-child(5) {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 5rem;
+    }
+}
+
+@media screen and (max-width: 390px) {
+ .container {
+    padding: 2.5rem .5rem;
+    overflow-x: hidden;
+ }
 }

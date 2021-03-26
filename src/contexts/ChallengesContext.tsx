@@ -32,6 +32,7 @@ export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps){
     const [level, setLevel] = useState(1)
+    const [experience, setExperience] = useState(0)
     const [currentExperience, setCurrentExperience] = useState(0)
     const [challengesCompleted, setChallengesCompleted] = useState(0)
 
@@ -47,24 +48,28 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             if(!!data.level)
                 setLevel(Number(data.level) ?? 1)
             if(!!data.currentExperience)
-                setCurrentExperience(Number(data.currentExperience) ?? 1)
+                setExperience(Number(data.experience) ?? 0)
+            if(!!data.currentExperience)
+                setCurrentExperience(Number(data.currentExperience) ?? 0)
             if(!!data.challengesCompleted)
-                setChallengesCompleted(Number(data.challengesCompleted) ?? 1)
+                setChallengesCompleted(Number(data.challengesCompleted) ?? 0)
         })
     }, [])
 
     useEffect(() => {
         updateChallengesData();
-    }, [level, currentExperience, challengesCompleted])
+    }, [level, experience, currentExperience, challengesCompleted])
 
     const updateChallengesData = async () => {
         if(level > 1 || currentExperience > 0 || challengesCompleted > 0 ) {
             Cookies.set('level', String(level))
+            Cookies.set('experience', String(experience))
             Cookies.set('currentExperience', String(currentExperience))
             Cookies.set('challengesCompleted', String(challengesCompleted))
             try{
                 axios.put(`/api/Users/${rest.login}`, { 
                     level, 
+                    experience, 
                     currentExperience, 
                     challengesCompleted 
                 })
@@ -115,6 +120,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             levelUp()
         }
 
+        setExperience(experience + amount)
         setCurrentExperience(finalExperience)
         setActiveChallenge(null)
         setChallengesCompleted(challengesCompleted + 1)
