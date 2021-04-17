@@ -41,11 +41,11 @@ export default function Award() {
   return (
     <>
       <Head>
-        <title>Award | Moveit</title>
+        <title>Rancking | Moveit</title>
       </Head>
 
       <div className={styles.container}>
-        <h1>Leaderboard</h1>
+        <h1>Rancking</h1>
 
         <section>
           <header className={styles.row}>
@@ -61,7 +61,7 @@ export default function Award() {
             {users.map((user, key) => (
               <li key={key} className={styles.row} onClick={() => openDetails(key)}>
                 <span>
-                  <strong>{key}</strong>
+                  <strong>{key + 1}</strong>
                 </span>
                 <div>
                   <img src={user.image} alt={user.name}/>
