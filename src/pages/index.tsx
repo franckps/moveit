@@ -22,7 +22,7 @@ interface HomeProps {
 }
 
 function handleLogin() {
-  signIn()
+  signIn('github')
 }
 
 function handleSignOut() {
