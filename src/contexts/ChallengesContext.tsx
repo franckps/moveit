@@ -45,13 +45,13 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
         Notification.requestPermission();
         axios.get(`/api/Users/${rest.login}`).then(response => {
             const { data } = response.data;
-            if(!!data.level)
+            if(!!data?.level)
                 setLevel(Number(data.level) ?? 1)
-            if(!!data.currentExperience)
+            if(!!data?.currentExperience)
                 setExperience(Number(data.experience) ?? 0)
-            if(!!data.currentExperience)
+            if(!!data?.currentExperience)
                 setCurrentExperience(Number(data.currentExperience) ?? 0)
-            if(!!data.challengesCompleted)
+            if(!!data?.challengesCompleted)
                 setChallengesCompleted(Number(data.challengesCompleted) ?? 0)
         })
     }, [])
