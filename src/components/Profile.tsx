@@ -3,16 +3,16 @@ import { ChallengesContext } from '../contexts/ChallengesContext';
 import styles from '../styles/components/Profile.module.css'
 
 interface ProfileProps {
-    login: string,
     name: string,
+    image: string,
     handleSignOut: () => void
 }
 
-export function Profile({login, name, handleSignOut}: ProfileProps) {
+export function Profile({name, image, handleSignOut}: ProfileProps) {
     const { level } = useContext(ChallengesContext)
     return (
         <div className={styles.profileContainer}>
-            <img src={`https://github.com/${login}.png`} alt={name} />
+            <img src={image} alt={name} />
             <div>
                 <strong>{name}</strong>
                 <p>

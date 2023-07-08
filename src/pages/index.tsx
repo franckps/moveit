@@ -37,6 +37,7 @@ export default function Home(props: HomeProps) {
     if(!!session){
       Cookies.set('login', String(session.user.name))
       Cookies.set('name', String(session.user.name))
+      Cookies.set('image', String(session.user.image))
     }
   }, [session])
 
@@ -65,7 +66,7 @@ export default function Home(props: HomeProps) {
               <section>
                 <div>
                   <Profile 
-                    login={session.user.name} 
+                    image={session.user.image} 
                     name={session.user.name} 
                     handleSignOut={handleSignOut} 
                   />
