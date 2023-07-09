@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signIn, signOut, useSession,  } from 'next-auth/client'
 import Cookies from 'js-cookie'
 
 import { CompletedChallenges } from '../components/CompletedChallenges';
@@ -34,8 +34,8 @@ export default function Home(props: HomeProps) {
   const [ activePage, setActivePage ] = useState('home')
 
   useEffect(() => {
-    if(!!session){
-      Cookies.set('login', String(session.user.name))
+    if(!!session){  
+      Cookies.set('id', String(session.user['id']))
       Cookies.set('name', String(session.user.name))
       Cookies.set('image', String(session.user.image))
     }
@@ -45,9 +45,8 @@ export default function Home(props: HomeProps) {
     setActivePage(page)
   }, [])
 
-  return (<>
-    {!session? <Login handleLogin={handleLogin}/> : (
-      <ChallengesProvider login={session.user.name}>
+  return (
+      <ChallengesProvider id_social={!!session? session.user['id'] : null}>
 
         <Menu activePage={String(activePage) as 'home' | 'award'} handleChangePage={handleChangePage}/>
 
@@ -65,11 +64,11 @@ export default function Home(props: HomeProps) {
             <CountDownProvider>
               <section>
                 <div>
-                  <Profile 
+                  {!!session? <Profile 
                     image={session.user.image} 
                     name={session.user.name} 
                     handleSignOut={handleSignOut} 
-                  />
+                  /> : <Login handleLogin={handleLogin}/>}
                   <CompletedChallenges />
                   <CountDown />
                 </div>
@@ -81,8 +80,7 @@ export default function Home(props: HomeProps) {
           </div>
         </>)}
       </ChallengesProvider>
-    )}
-  </>)
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

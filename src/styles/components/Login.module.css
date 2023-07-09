@@ -1,124 +1,49 @@
 .loginContainer {
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    background-color: #5965E0;
-    background-image: url('/simbolo.png');
-    background-repeat: no-repeat;
-    background-size: auto 80vh;
-    background-position-y: 10vh;
+    align-items: center;
 }
 
-.loginContainer > section {
-    width: 100%;
-    min-height: 100%;
-    max-width: 38.75rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+.loginContainer > img {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 50%;
+    background-color: var(--white);
 }
 
-.loginContainer > section > img {
-    margin-bottom: 6rem;
+.loginContainer div {
+    margin-left: 1.5rem;
 }
 
-.loginContainer > section > h1 {
-    font-size: 2.25rem;
-    color: var(--white);
-    margin-bottom: 1.5rem;
-}
-
-.loginContainer > section > p{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 2.5rem;
-}
-
-.loginContainer > section > p img {
-    margin-right: 1.5rem;
-    height: 40px;
-    width: 40px;
-}
-
-.loginContainer > section > p span{
-    flex: 1;
-    max-width: 15.87rem;
-    font-size: 1.25rem;
-    color: var(--text-highlight);
-}
-
-.loginContainer > section > div{
-    display: flex;
-    width: 100%;
-    max-width: 26.25rem;
-
-}
-
-.loginContainer > section > div button {
-    padding: 1.4rem 0 1.4rem 1.87rem;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    border-radius: 5px;
-    border: 0;
-    color: var(--white);
-    background-color: transparent;
-    background-image: linear-gradient(to right ,rgba(73, 83, 184, 1), rgba(73, 83, 184, .2));
-}
-
-.loginContainer > section > div button:hover:not(:disabled) {
-    background-size: 500% 100%;
-}
-
-.loginContainer > section > div button:disabled {
-    opacity: .7;
-    cursor: not-allowed;
-}
-
-.loginContainer > section > div button span {
-    display: block;
-    font-size: 1.25rem;
+.loginContainer div strong {
+    font-size: 1.5rem;
     font-weight: 600;
+    color: var(--title);
 }
 
-.loginContainer > section > div button span:first-of-type {
-    text-align: left;
-    flex: 1;
+.loginContainer div p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
 }
 
-.loginContainer > section > div button span:last-of-type {
-    width: 5rem;
+.loginContainer div p img {
+    margin-right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
 }
 
-@media screen and (min-width: 790px) and (max-width: 1000px) {
-    .loginContainer > section {
-        max-width: 25rem;
-        padding-right: 2rem;
-    }
+.signInButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 3rem;
+    gap: 1rem;
+    border: 0;
+    padding: 5px 15px;
+    border-radius: 10px;
+    background-color: var(--title);
+    color: var(--white);
+    cursor: pointer;
 }
-
-@media screen and (max-width: 790px) {
-    .loginContainer {
-        background-image: none;
-    }
-
-    .loginContainer > section {
-        max-width: 100%;
-        align-items: center;
-        padding: 0 10px;
-    }
-
-    .loginContainer > section > img {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    .loginContainer > section > div button:not(:disabled) {
-        background-size: 500% 100%;
-    }
+.signInButton span {
+    font-weight: bold;
 }
