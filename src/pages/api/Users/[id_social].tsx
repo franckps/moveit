@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 interface UserInterface {
     _id: string,
     name: string,
+    id_social: string,
     image: string,
     createdAt: string,
     updatedAt: string,
@@ -16,13 +17,13 @@ interface UserInterface {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { method } = req
-    const { name } = req.query as {name: string}
+    const { id_social } = req.query as {id_social: string}
     switch(method){
         case('GET'):
             try {
                 const connection = (await dbConnection(process.env.DATABASE_URL))
                     .collection('users');
-                let users: UserInterface = await connection.findOne({name})
+                let users: UserInterface = await connection.findOne({id_social})
                 return res.status(200).json({success: true, data: users})
             } catch (error) {
                 return res.status(400).json({success: false})
@@ -34,7 +35,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 const { experience, currentExperience, challengesCompleted, level } = req.body
                 const connection = (await dbConnection(process.env.DATABASE_URL))
                     .collection('users');
-                await connection.updateOne({name},{
+                await connection.updateOne({id_social},{
                     $set: {
                         experience,
                         currentExperience,
@@ -43,7 +44,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                         experienceUpdatedAt: (new Date())
                     }
                 })
-                let users: UserInterface = await connection.findOne({name})
+                let users: UserInterface = await connection.findOne({id_social})
                 return res.status(201).json({success: true, data: users})
             } catch (error) {
                 console.log('error: ', error)

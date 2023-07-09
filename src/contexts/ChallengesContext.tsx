@@ -24,7 +24,7 @@ interface ChallengesContextData {
 }
 
 interface ChallengesProviderProps {
-    login: string;
+    id_social: string;
     children: ReactNode;
 }
 
@@ -43,7 +43,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
 
     useEffect(() => {
         Notification.requestPermission();
-        axios.get(`/api/Users/${rest.login}`).then(response => {
+        axios.get(`/api/Users/${rest.id_social}`).then(response => {
             const { data } = response.data;
             if(!!data?.level)
                 setLevel(Number(data.level) ?? 1)
@@ -54,7 +54,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             if(!!data?.challengesCompleted)
                 setChallengesCompleted(Number(data.challengesCompleted) ?? 0)
         })
-    }, [])
+    }, [rest])
 
     useEffect(() => {
         updateChallengesData();
@@ -67,7 +67,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             Cookies.set('currentExperience', String(currentExperience))
             Cookies.set('challengesCompleted', String(challengesCompleted))
             try{
-                axios.put(`/api/Users/${rest.login}`, { 
+                axios.put(`/api/Users/${rest.id_social}`, { 
                     level, 
                     experience, 
                     currentExperience, 
