@@ -59,7 +59,7 @@ export default function Home(props: HomeProps) {
 
           <div className={styles.container}>
 
-            <ExperienceBar />
+            {session && <ExperienceBar />}
 
             <CountDownProvider>
               <section>

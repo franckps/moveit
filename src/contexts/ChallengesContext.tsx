@@ -54,7 +54,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             if(!!data?.challengesCompleted)
                 setChallengesCompleted(Number(data.challengesCompleted) ?? 0)
         })
-    }, [rest])
+    }, [rest.id_social])
 
     useEffect(() => {
         updateChallengesData();
@@ -80,6 +80,8 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
     }
 
     function levelUp() {
+        if(!rest.id_social)
+            return;
         setLevel(level + 1)
         setIsLevelUpModalOpen(true)
     }
