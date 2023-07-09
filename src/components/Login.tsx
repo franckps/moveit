@@ -12,31 +12,23 @@ export default function Login({ handleLogin }: LoginPropsInterface) {
 
     return (
         <div className={styles.loginContainer}>
-            <section>
-                <img src="/logo-full-white.svg" alt="Logo"/>
-
-                <h1>Bem-vindo</h1>
+            <img src="/simbolo.png" alt="Not authenticated" />
+            <div>
+                <strong>Logar com Github</strong>
                 <p>
-                    <img src="/github.png" alt="Github"/>
-                    <span>
-                        Faça login com seu Github para começar
-                    </span>
+                    {loading? (
+                        <button type="button" className={styles.signInButton} disabled>
+                            <span>carregando...</span>
+                            <span></span>
+                        </button>
+                    ) : (
+                        <button type="button" className={styles.signInButton} onClick={() => {setLoading(true); handleLogin()}}>
+                            <span>Login</span>
+                            <span><img src="/github.png" alt="Login Button"/></span>
+                        </button>
+                    )}
                 </p>
-                <div>
-                {loading? (
-                    <button type="button" disabled>
-                        <span>carregando...</span>
-                        <span></span>
-                    </button>
-                ) : (
-                    <button type="button" onClick={() => {setLoading(true); handleLogin()}}>
-                        <span>Logar com o github</span>
-                        <span><img src="/arrow-right.png" alt="Login Button"/></span>
-                    </button>
-                )}
-                </div>
-                <span style={{paddingLeft: '1.87rem',color: '#F00'}}>{message}</span>
-            </section>
+            </div>
         </div>
     );
 }

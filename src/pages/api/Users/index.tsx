@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 interface UserInterface {
     _id: string,
     name: string,
+    id_social: string,
     image: string,
     createdAt: string,
     updatedAt: string,
